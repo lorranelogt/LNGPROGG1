@@ -9,6 +9,7 @@ from analise import CSV, LABELS, NUM, preparar, persistir, conclusao
 st.set_page_config(page_title='Observatório Econômico | Tema 17',page_icon='📊',layout='wide')
 st.title('Observatório Econômico do Brasil')
 st.caption('PROJETO G1 · TEMA 17 · 2015–2024')
+st.markdown('**Aluna:** Lorrane Goulart  \n**Professor:** Alexandre Neves Louzada')
 st.write('Como evoluem o PIB, os preços, a renda e o consumo? Explore indicadores trimestrais, compare períodos e investigue relações entre variáveis.')
 st.info('Base simulada para fins acadêmicos. Os valores não representam estatísticas oficiais. As unidades e a periodicidade de acumulação do PIB e da inflação não foram detalhadas pela fonte.')
 
