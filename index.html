@@ -1,12 +1,376 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Indicadores Econômicos do Brasil | Tema 17</title><style>
-:root{--ink:#173b40;--green:#087f72;--paper:#f5f7f1;--gold:#f1b954}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 system-ui,sans-serif}a{color:var(--green)}nav{padding:20px 6%;display:flex;justify-content:space-between;border-bottom:1px solid #d7e2d8;gap:20px;flex-wrap:wrap}nav a{margin-right:20px;text-decoration:none;font-size:14px}main{max-width:1180px;margin:auto;padding:0 30px}header{padding:80px 0 60px;max-width:920px}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:700;color:var(--green)}h1{font-size:clamp(40px,6vw,78px);line-height:1.08;letter-spacing:-3px;margin:25px 0}h2{font-size:32px;line-height:1.2}h3{font-size:19px}header p{max-width:730px;font-size:20px}.tag{display:inline-block;background:#e0ebe1;padding:5px 12px;border-radius:30px;font-size:12px;margin:3px}.button{display:inline-block;background:var(--green);color:white;padding:12px 20px;border-radius:6px;text-decoration:none;margin:12px 8px 0 0}.outline{background:transparent;color:var(--green);border:1px solid var(--green)}section{padding:40px 0;border-top:1px solid #d7e2d8}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{padding:26px;background:white;border:1px solid #dce5da;border-radius:10px}.number{font-size:38px;font-weight:700;display:block}.muted,figcaption{font-size:14px;color:#516a69}figure{margin:28px 0}img{width:100%;height:auto;border-radius:10px;background:white}.two{display:grid;grid-template-columns:1fr 1fr;gap:35px}.notice{border-left:4px solid var(--gold);padding:10px 20px;background:#fff8e8}footer{padding:35px 0;font-size:14px}li{margin:8px 0}code{font-size:14px}a:focus-visible{outline:3px solid #bc7311;outline-offset:5px}@media(max-width:720px){.grid,.two{grid-template-columns:1fr}header{padding-top:40px}h1{letter-spacing:-1.5px}main{padding:0 20px}}
-</style></head><body><nav><strong>OBSERVATÓRIO / BR</strong><div><a href="#projeto">Projeto</a><a href="#resultados">Resultados</a><a href="#metodo">Método</a><a href="#entregas">Entregas</a></div></nav><main><header><span class="eyebrow">ANÁLISE DE DADOS · G1 · TEMA 17</span><p class="muted"><strong>Aluna:</strong> Lorrane Goulart<br><strong>Professor:</strong> Alexandre Neves Louzada</p><h1>A economia brasileira,<br>vista pelos dados.</h1><p>Uma investigação de indicadores econômicos em 40 trimestres: evolução do PIB, comportamento dos preços e relações entre renda, juros e consumo.</p><span class="tag">2015 — 2024</span><span class="tag">10 indicadores</span><span class="tag">Base simulada</span><br><a class="button" href="#resultados">Explorar resultados ↓</a><a class="button outline" href="notebooks/analise_indicadores_economicos.ipynb" download>Baixar notebook</a></header>
-<section id="projeto"><div class="two"><div><span class="eyebrow">01 / O PROJETO</span><h2>Transformar números em perguntas melhores.</h2></div><div><p>Como o PIB evoluiu? Inflação e desemprego se relacionam? Juros e consumo se movem juntos? Este projeto utiliza Python para preparar, analisar e apresentar uma base econômica trimestral.</p><p class="notice">Dados simulados fornecidos para a atividade. Os resultados não descrevem a trajetória real do Brasil, nem permitem recomendações econômicas.</p></div></div></section>
-<section id="resultados"><span class="eyebrow">02 / RESULTADOS DA BASE COMPLETA</span><h2>Um panorama de dez anos</h2><div class="grid"><div class="card"><span class="muted">PIB médio · unidade da base</span><span class="number">2.273.106</span></div><div class="card"><span class="muted">Inflação média</span><span class="number">6,56%</span></div><div class="card"><span class="muted">Desemprego médio</span><span class="number">9,28%</span></div></div><figure><img src="imagens/evolucao.png" alt="Séries trimestrais do PIB, renda média e câmbio de 2015 a 2024"><figcaption>PIB em unidades da fonte; renda sem deflacionamento. Média móvel de quatro trimestres.</figcaption></figure><div class="two"><div><h3>Inflação × desemprego</h3><p>Pearson r = -0.078. Associação contemporânea observada na simulação.</p></div><div><h3>Juros × consumo</h3><p>Pearson r = -0.017. O resultado não demonstra impacto causal da taxa de juros.</p></div></div><figure><img src="imagens/relacoes.png" alt="Dispersões de inflação e desemprego e de juros e consumo, por nível econômico"></figure><h3>Comparar períodos e escalas</h3><img src="imagens/comparacao.png" alt="Barras de PIB médio por ano e heatmap de inflação por trimestre"><p class="muted">As barras representam médias trimestrais por ano, não o PIB anual.</p><h3>Conclusão executiva</h3><p>No recorte de 40 trimestres, o maior PIB ocorre em 2016-T3. A correlação inflação–desemprego é -0.08 e juros–consumo é -0.02. O maior coeficiente de variação dos níveis é de Inflação (%). Há 14 registros rotulados como Crise pela fonte. Essas associações não demonstram causalidade. A base é simulada, os rótulos não equivalem a uma classificação oficial de recessão e não permitem diagnosticar a economia brasileira real.</p></section>
-<section id="metodo"><span class="eyebrow">03 / METODOLOGIA</span><h2>Da fonte ao dashboard</h2><div class="grid"><article class="card"><h3>01. Preparar</h3><p>Validar datas e categorias, remover duplicatas e verificar a granularidade trimestral. A fonte contém 40 registros válidos, sem ausências.</p></article><article class="card"><h3>02. Investigar</h3><p>Calcular KPIs, variação trimestral, média móvel, correlações e dispersão relativa. Comparar indicadores com normalização explícita.</p></article><article class="card"><h3>03. Comunicar</h3><p>Dashboard Streamlit com quatro filtros, gráficos Plotly, Matplotlib e Seaborn, tabelas e conclusão dinâmica.</p></article></div><p><strong>Recursos avançados:</strong> persistência SQLite com SQLAlchemy, correlação estatística e média móvel temporal.</p><p class="muted">A escala do PIB e do comércio exterior não está especificada. Não há ajuste sazonal ou deflator. Rótulos de crise são preservados da fonte.</p></section>
-<section id="entregas"><span class="eyebrow">04 / ACESSE O PROJETO</span><h2>Código, análise e dados</h2><a class="button" href="app.py" download>Código do dashboard</a><a class="button outline" href="notebooks/analise_indicadores_economicos.ipynb" download>Notebook executado</a><a class="button outline" href="dados/simulacao_indicadores_economicos_brasil.csv" download>Base CSV</a><a class="button outline" href="README.md">Documentação</a><div id="online"><p class="muted">Os links do repositório e do dashboard serão exibidos após a configuração da publicação.</p></div></section><footer>Projeto acadêmico · Indicadores Econômicos do Brasil · Python / Pandas / Matplotlib / Seaborn / Streamlit</footer></main><script>
-// Preencha com os endereços reais após publicar. Não use URLs de exemplo.
-const links = {github: "", streamlit: ""};
-const box = document.getElementById('online');
-if(links.github || links.streamlit){box.replaceChildren();for(const [nome,url] of Object.entries(links)){if(url.startsWith('https://')){const a=document.createElement('a');a.className='button';a.href=url;a.textContent=nome==='github'?'Repositório GitHub':'Abrir dashboard';a.rel='noopener';box.appendChild(a);}}}
-</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indicadores Econômicos do Brasil | Tema 17</title>
+    <style>
+      :root {
+        --ink: #173b40;
+        --green: #087f72;
+        --paper: #f5f7f1;
+        --gold: #f1b954;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font: 17px/1.65 system-ui, sans-serif;
+      }
+      a {
+        color: var(--green);
+      }
+      nav {
+        padding: 20px 6%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #d7e2d8;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        margin-right: 20px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      main {
+        max-width: 1180px;
+        margin: auto;
+        padding: 0 30px;
+      }
+      header {
+        padding: 80px 0 60px;
+        max-width: 920px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        color: var(--green);
+      }
+      h1 {
+        font-size: clamp(40px, 6vw, 78px);
+        line-height: 1.08;
+        letter-spacing: -3px;
+        margin: 25px 0;
+      }
+      h2 {
+        font-size: 32px;
+        line-height: 1.2;
+      }
+      h3 {
+        font-size: 19px;
+      }
+      header p {
+        max-width: 730px;
+        font-size: 20px;
+      }
+      .tag {
+        display: inline-block;
+        background: #e0ebe1;
+        padding: 5px 12px;
+        border-radius: 30px;
+        font-size: 12px;
+        margin: 3px;
+      }
+      .button {
+        display: inline-block;
+        background: var(--green);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        margin: 12px 8px 0 0;
+      }
+      .outline {
+        background: transparent;
+        color: var(--green);
+        border: 1px solid var(--green);
+      }
+      section {
+        padding: 40px 0;
+        border-top: 1px solid #d7e2d8;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .card {
+        padding: 26px;
+        background: white;
+        border: 1px solid #dce5da;
+        border-radius: 10px;
+      }
+      .number {
+        font-size: 38px;
+        font-weight: 700;
+        display: block;
+      }
+      .muted,
+      figcaption {
+        font-size: 14px;
+        color: #516a69;
+      }
+      figure {
+        margin: 28px 0;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        background: white;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+      }
+      .notice {
+        border-left: 4px solid var(--gold);
+        padding: 10px 20px;
+        background: #fff8e8;
+      }
+      footer {
+        padding: 35px 0;
+        font-size: 14px;
+      }
+      li {
+        margin: 8px 0;
+      }
+      code {
+        font-size: 14px;
+      }
+      a:focus-visible {
+        outline: 3px solid #bc7311;
+        outline-offset: 5px;
+      }
+      @media (max-width: 720px) {
+        .grid,
+        .two {
+          grid-template-columns: 1fr;
+        }
+        header {
+          padding-top: 40px;
+        }
+        h1 {
+          letter-spacing: -1.5px;
+        }
+        main {
+          padding: 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <strong>OBSERVATÓRIO / BR</strong>
+      <div>
+        <a href="#projeto">Projeto</a><a href="#resultados">Resultados</a
+        ><a href="#metodo">Método</a><a href="#entregas">Entregas</a>
+      </div>
+    </nav>
+    <main>
+      <header>
+        <span class="eyebrow">ANÁLISE DE DADOS · G1 · TEMA 17</span>
+        <p class="muted">
+          <strong>Aluna:</strong> Lorrane Goulart<br /><strong
+            >Professor:</strong> Alexandre Neves Louzada <strong> Disciplina: </strong> Linguagens de Programação
+        </p>
+        <h1>A economia brasileira,<br />vista pelos dados.</h1>
+        <p>
+          Uma investigação de indicadores econômicos em 40 trimestres: evolução
+          do PIB, comportamento dos preços e relações entre renda, juros e
+          consumo.
+        </p>
+        <span class="tag">2015 — 2024</span
+        ><span class="tag">10 indicadores</span
+        ><span class="tag">Base simulada</span><br /><a
+          class="button"
+          href="#resultados"
+          >Explorar resultados ↓</a
+        ><a
+          class="button outline"
+          href="notebooks/analise_indicadores_economicos.ipynb"
+          download
+          >Baixar notebook</a
+        >
+      </header>
+      <section id="projeto">
+        <div class="two">
+          <div>
+            <span class="eyebrow">01 / O PROJETO</span>
+            <h2>Transformar números em perguntas melhores.</h2>
+          </div>
+          <div>
+            <p>
+              Como o PIB evoluiu? Inflação e desemprego se relacionam? Juros e
+              consumo se movem juntos? Este projeto utiliza Python para
+              preparar, analisar e apresentar uma base econômica trimestral.
+            </p>
+            <p class="notice">
+              Dados simulados fornecidos para a atividade. Os resultados não
+              descrevem a trajetória real do Brasil, nem permitem recomendações
+              econômicas.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="resultados">
+        <span class="eyebrow">02 / RESULTADOS DA BASE COMPLETA</span>
+        <h2>Um panorama de dez anos</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="muted">PIB médio · unidade da base</span
+            ><span class="number">2.273.106</span>
+          </div>
+          <div class="card">
+            <span class="muted">Inflação média</span
+            ><span class="number">6,56%</span>
+          </div>
+          <div class="card">
+            <span class="muted">Desemprego médio</span
+            ><span class="number">9,28%</span>
+          </div>
+        </div>
+        <figure>
+          <img
+            src="imagens/evolucao.png"
+            alt="Séries trimestrais do PIB, renda média e câmbio de 2015 a 2024"
+          />
+          <figcaption>
+            PIB em unidades da fonte; renda sem deflacionamento. Média móvel de
+            quatro trimestres.
+          </figcaption>
+        </figure>
+        <div class="two">
+          <div>
+            <h3>Inflação × desemprego</h3>
+            <p>
+              Pearson r = -0.078. Associação contemporânea observada na
+              simulação.
+            </p>
+          </div>
+          <div>
+            <h3>Juros × consumo</h3>
+            <p>
+              Pearson r = -0.017. O resultado não demonstra impacto causal da
+              taxa de juros.
+            </p>
+          </div>
+        </div>
+        <figure>
+          <img
+            src="imagens/relacoes.png"
+            alt="Dispersões de inflação e desemprego e de juros e consumo, por nível econômico"
+          />
+        </figure>
+        <h3>Comparar períodos e escalas</h3>
+        <img
+          src="imagens/comparacao.png"
+          alt="Barras de PIB médio por ano e heatmap de inflação por trimestre"
+        />
+        <p class="muted">
+          As barras representam médias trimestrais por ano, não o PIB anual.
+        </p>
+        <h3>Conclusão executiva</h3>
+        <p>
+          No recorte de 40 trimestres, o maior PIB ocorre em 2016-T3. A
+          correlação inflação–desemprego é -0.08 e juros–consumo é -0.02. O
+          maior coeficiente de variação dos níveis é de Inflação (%). Há 14
+          registros rotulados como Crise pela fonte. Essas associações não
+          demonstram causalidade. A base é simulada, os rótulos não equivalem a
+          uma classificação oficial de recessão e não permitem diagnosticar a
+          economia brasileira real.
+        </p>
+      </section>
+      <section id="metodo">
+        <span class="eyebrow">03 / METODOLOGIA</span>
+        <h2>Da fonte ao dashboard</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>01. Preparar</h3>
+            <p>
+              Validar datas e categorias, remover duplicatas e verificar a
+              granularidade trimestral. A fonte contém 40 registros válidos, sem
+              ausências.
+            </p>
+          </article>
+          <article class="card">
+            <h3>02. Investigar</h3>
+            <p>
+              Calcular KPIs, variação trimestral, média móvel, correlações e
+              dispersão relativa. Comparar indicadores com normalização
+              explícita.
+            </p>
+          </article>
+          <article class="card">
+            <h3>03. Comunicar</h3>
+            <p>
+              Dashboard Streamlit com quatro filtros, gráficos Plotly,
+              Matplotlib e Seaborn, tabelas e conclusão dinâmica.
+            </p>
+          </article>
+        </div>
+        <p>
+          <strong>Recursos avançados:</strong> persistência SQLite com
+          SQLAlchemy, correlação estatística e média móvel temporal.
+        </p>
+        <p class="muted">
+          A escala do PIB e do comércio exterior não está especificada. Não há
+          ajuste sazonal ou deflator. Rótulos de crise são preservados da fonte.
+        </p>
+      </section>
+      <section id="entregas">
+        <span class="eyebrow">04 / ACESSE O PROJETO</span>
+        <h2>Código, análise e dados</h2>
+        <a class="button" href="app.py" download>Código do dashboard</a
+        ><a
+          class="button outline"
+          href="notebooks/analise_indicadores_economicos.ipynb"
+          download
+          >Notebook executado</a
+        ><a
+          class="button outline"
+          href="dados/simulacao_indicadores_economicos_brasil.csv"
+          download
+          >Base CSV</a
+        ><a class="button outline" href="README.md">Documentação</a>
+        <div id="online">
+          <p class="muted">
+            Os links do repositório e do dashboard serão exibidos após a
+            configuração da publicação.
+          </p>
+        </div>
+      </section>
+      <footer>
+        Projeto acadêmico · Indicadores Econômicos do Brasil · Python / Pandas /
+        Matplotlib / Seaborn / Streamlit
+      </footer>
+    </main>
+    <script>
+      const links = { github: "", streamlit: "" };
+      const box = document.getElementById("online");
+      if (links.github || links.streamlit) {
+        box.replaceChildren();
+        for (const [nome, url] of Object.entries(links)) {
+          if (url.startsWith("https://")) {
+            const a = document.createElement("a");
+            a.className = "button";
+            a.href = url;
+            a.textContent =
+              nome === "github" ? "Repositório GitHub" : "Abrir dashboard";
+            a.rel = "noopener";
+            box.appendChild(a);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
